@@ -1,1 +1,5 @@
+com\albertoalvarez\pagatodo\hexagonal\infraestructura\inputadapter\SignUpController.class
+com\albertoalvarez\pagatodo\hexagonal\aplicacion\UsuarioDetailsService.class
+com\albertoalvarez\pagatodo\hexagonal\dominio\User.class
 com\albertoalvarez\pagatodo\hexagonal\Application.class
+com\albertoalvarez\pagatodo\hexagonal\infraestructura\inputadapter\SecurityConfig.class

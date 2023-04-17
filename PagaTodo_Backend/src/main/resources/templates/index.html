@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Exitoso</title>
+</head>
+<body>
+    <h1>Login Exitoso</h1>
+
+    <p>El usuario <span th:text="${username}"></span> ha ingresado exitosamente.</p>
+
+    <!-- Puedes usar la expresión ${#authentication.name} para obtener el nombre de usuario del usuario autenticado en Spring Security -->
+    <div><a href="/logout">Cerrar sesión</a></div>
+</body>
+</html>
