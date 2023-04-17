@@ -51,3 +51,20 @@ private void actualizarSaldo(Connection conn, int cliente, BigDecimal nuevoSaldo
     }
 }
 ```
+
+* Punto 6
+
+Si dos hilos o más acceden concurrentemente a una variable o a una sección crítica del código sin la debida coordinación que garantice el buen comportamiento de la aplicación pueden generarse escenarios fuera de lo común para el negocio dificiles de idenficiar y causando daños grabes. Esto se conoce como condicion de carrera, y existen diferentes formas de solucionarlo. Por ejemplo en Java existe "synchronized" que permite bloquear un variables o funciones asegurando que solo un hilo a la vez pueda modificarla o ejecutarla.
+
+```java
+  
+  private int contador = 0;
+
+  public synchronized void incrementarContador() {
+      contador++;
+      System.out.println("Contador incrementado: " + contador);
+  }
+
+```
+El metodo incrementarContador esta declarado con la palabra reservada synchronized  lo que significa que solo un hilo a la vez puede ejecutar este método en una instancia de la clase a la que pertenece, evitando así condiciones de carrera en la modificación del contador.
+
