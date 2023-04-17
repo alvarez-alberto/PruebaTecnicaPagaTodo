@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers("/signup", "/signup/**").permitAll() // Permite el acceso a /signup sin autenticación
+        .antMatchers("/signup", "/signup/**", "/api/**").permitAll() // Permite el acceso a /signup sin autenticación
         .anyRequest().authenticated() // Todas las demás rutas requieren autenticación
             .and()
             .formLogin()

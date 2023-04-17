@@ -1,5 +1,7 @@
 package com.albertoalvarez.pagatodo.hexagonal.aplicacion;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.albertoalvarez.pagatodo.hexagonal.aplicacion.daos.UserDao;
 import com.albertoalvarez.pagatodo.hexagonal.dominio.User;
 
 
@@ -60,4 +63,25 @@ public class UsuarioDetailsService implements UserDetailsService {
         int count = jdbcTemplate.queryForObject(sql, Integer.class, username);
         return count > 0;
     }
+
+    
+    public HashMap<Long, UserDao> listarUsuarios() {
+        String sql = "SELECT * FROM users";
+        return jdbcTemplate.query(sql, (rs) -> {
+            HashMap<Long, UserDao> usuarios = new HashMap<Long, UserDao>();
+            while (rs.next()) {
+                UserDao usuario = new UserDao();
+                
+                usuario.setUsername(rs.getString("username"));
+                usuario.setEnabled(rs.getBoolean("enabled"));
+                usuario.setAccountNonExpired(rs.getBoolean("account_non_expired"));
+                usuario.setCredentialsNonExpired(rs.getBoolean("account_non_expired"));
+                usuario.setAccountNonLocked( rs.getBoolean("account_non_locked"));   
+
+                usuarios.put( rs.getLong("id"), usuario);
+            }
+            return usuarios;
+        });
+    }
+    
 }
